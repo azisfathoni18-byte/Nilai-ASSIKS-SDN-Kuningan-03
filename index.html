@@ -1,0 +1,676 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Nilai ASSIKS Periode 12-13 Oktober 2026 - SDN Kuningan 03</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f1f5f9;
+        }
+        @media print {
+            body {
+                background-color: #ffffff;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .print-only {
+                display: block !important;
+            }
+            .print-shadow-none {
+                box-shadow: none !important;
+                border: 1px solid #cbd5e1 !important;
+            }
+        }
+        .fade-in {
+            animation: fadeIn 0.35s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between text-slate-800">
+
+    <!-- Navbar -->
+    <header class="bg-gradient-to-r from-blue-900 via-blue-800 to-indigo-900 text-white shadow-lg no-print">
+        <div class="max-w-6xl mx-auto px-4 py-3.5 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-11 h-11 rounded-xl bg-white/15 backdrop-blur-md flex items-center justify-center border border-white/25 shadow-inner">
+                    <i class="ph-fill ph-graduation-cap text-2xl text-amber-300"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-lg sm:text-xl tracking-tight leading-tight">SDN KUNINGAN 03</h1>
+                    <p class="text-xs text-blue-200 font-medium">Daftar Nilai ASSIKS • Periode 12–13 Oktober 2026</p>
+                </div>
+            </div>
+            <div id="navUserSection" class="hidden items-center space-x-2 sm:space-x-3">
+                <span id="navUserBadge" class="hidden sm:inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-blue-950/60 text-blue-100 border border-blue-700/50">
+                    <i class="ph ph-user-circle mr-1.5 text-base"></i>
+                    <span id="navUserName">Siswa</span>
+                </span>
+                <button onclick="logout()" class="flex items-center space-x-1.5 bg-rose-500 hover:bg-rose-600 active:bg-rose-700 text-white px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition shadow-md">
+                    <i class="ph-bold ph-sign-out text-base"></i>
+                    <span>Keluar</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="flex-grow flex items-center justify-center p-4 sm:p-6">
+        
+        <!-- VIEW 1: LOGIN SCREEN -->
+        <section id="loginView" class="w-full max-w-md fade-in">
+            <div class="bg-white rounded-3xl shadow-xl border border-slate-200/80 overflow-hidden">
+                <!-- Card Header -->
+                <div class="bg-gradient-to-br from-blue-800 to-indigo-900 p-6 sm:p-8 text-center text-white relative overflow-hidden">
+                    <div class="absolute -right-8 -top-8 w-32 h-32 rounded-full bg-white/5"></div>
+                    <div class="absolute -left-8 -bottom-8 w-28 h-28 rounded-full bg-white/5"></div>
+                    <div class="w-16 h-16 rounded-2xl bg-white/15 backdrop-blur-sm border border-white/25 flex items-center justify-center mx-auto mb-3 shadow-lg">
+                        <i class="ph-duotone ph-student text-4xl text-amber-300"></i>
+                    </div>
+                    <h2 class="text-2xl font-extrabold tracking-tight">Cek Nilai ASSIKS 2026</h2>
+                    <p class="text-xs sm:text-sm text-blue-100 mt-1">Periode 12–13 Oktober 2026 • SDN Kuningan 03</p>
+                </div>
+
+                <!-- Login Form -->
+                <form id="loginForm" onsubmit="handleLogin(event)" class="p-6 sm:p-8 space-y-5">
+                    
+                    <!-- Alert Error Box -->
+                    <div id="loginError" class="hidden items-start space-x-2.5 bg-rose-50 border border-rose-200 text-rose-700 px-4 py-3 rounded-2xl text-xs sm:text-sm">
+                        <i class="ph-fill ph-warning-circle text-lg text-rose-500 shrink-0 mt-0.5"></i>
+                        <span id="loginErrorText">Username atau Password tidak sesuai!</span>
+                    </div>
+
+                    <div>
+                        <label for="username" class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-2">
+                            Menu User / Username
+                        </label>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-400">
+                                <i class="ph-bold ph-buildings text-lg"></i>
+                            </span>
+                            <input 
+                                type="text" 
+                                id="username" 
+                                value="SDNKUN03"
+                                placeholder="Masukkan User (SDNKUN03)" 
+                                required
+                                class="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-300 rounded-xl text-sm font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white transition uppercase"
+                            >
+                        </div>
+                        <p class="text-[11px] text-slate-400 mt-1">Default user sekolah: <strong class="text-slate-600">SDNKUN03</strong></p>
+                    </div>
+
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <label for="password" class="block text-xs font-bold uppercase tracking-wider text-slate-600">
+                                Password (No. Absen)
+                            </label>
+                            <button type="button" onclick="toggleStudentHelper()" class="text-xs font-semibold text-blue-600 hover:text-blue-800 flex items-center space-x-1">
+                                <i class="ph-bold ph-list-numbers"></i>
+                                <span>Lihat Daftar No. Absen</span>
+                            </button>
+                        </div>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-400">
+                                <i class="ph-bold ph-key text-lg"></i>
+                            </span>
+                            <input 
+                                type="password" 
+                                id="password" 
+                                placeholder="Ketik Nomor Absen (1 - 21)" 
+                                required
+                                class="w-full pl-10 pr-11 py-3 bg-slate-50 border border-slate-300 rounded-xl text-sm font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white transition"
+                            >
+                            <button type="button" onclick="togglePasswordVisibility()" class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-600">
+                                <i id="eyeIcon" class="ph-bold ph-eye text-lg"></i>
+                            </button>
+                        </div>
+                        <p class="text-[11px] text-slate-400 mt-1">Masukkan angka nomor urut/absen (<strong class="text-slate-600">1 s.d. 21</strong>). Ketik <strong class="text-slate-600">GURU</strong> untuk rekap semua siswa.</p>
+                    </div>
+
+                    <button 
+                        type="submit" 
+                        class="w-full bg-gradient-to-r from-blue-700 to-indigo-700 hover:from-blue-800 hover:to-indigo-800 active:scale-[0.99] text-white font-bold py-3.5 px-6 rounded-xl shadow-lg shadow-blue-700/25 flex items-center justify-center space-x-2 transition duration-150"
+                    >
+                        <span>Lihat Hasil Nilai</span>
+                        <i class="ph-bold ph-arrow-right"></i>
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- VIEW 2: STUDENT DASHBOARD -->
+        <section id="studentView" class="hidden w-full max-w-4xl fade-in">
+            <div class="bg-white rounded-3xl shadow-xl border border-slate-200/80 overflow-hidden print-shadow-none">
+                
+                <!-- Print Header (Only visible when printing) -->
+                <div class="hidden print-only p-6 border-b-2 border-slate-800 text-center">
+                    <h1 class="text-xl font-extrabold uppercase">DAFTAR NILAI ASSIKS PERIODE 12-13 OKTOBER 2026</h1>
+                    <h2 class="text-2xl font-black uppercase">SDN KUNINGAN 03 TAHUN 2026</h2>
+                    <p class="text-xs text-slate-600 mt-1">Laporan Hasil Individu Siswa</p>
+                </div>
+
+                <!-- Student Top Banner -->
+                <div class="bg-gradient-to-r from-blue-900 via-blue-800 to-indigo-900 p-6 sm:p-8 text-white relative">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                        <div class="space-y-1.5">
+                            <div class="inline-flex items-center space-x-2 bg-amber-400/20 border border-amber-300/40 text-amber-200 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+                                <i class="ph-fill ph-seal-check"></i>
+                                <span>ASSIKS Periode 12–13 Oktober 2026</span>
+                            </div>
+                            <h2 id="stName" class="text-2xl sm:text-3xl font-extrabold tracking-tight">NAMA SISWA</h2>
+                            <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs sm:text-sm text-blue-200 font-medium pt-1">
+                                <span class="flex items-center"><i class="ph-bold ph-identification-badge mr-1.5 text-amber-300"></i>No. Absen: <strong id="stAbsen" class="text-white ml-1">-</strong></span>
+                                <span class="flex items-center"><i class="ph-bold ph-barcode mr-1.5 text-amber-300"></i>NISN: <strong id="stNisn" class="text-white ml-1">-</strong></span>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="flex items-center space-x-2.5 no-print">
+                            <button onclick="window.print()" class="bg-white/15 hover:bg-white/25 text-white border border-white/25 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold flex items-center space-x-2 transition">
+                                <i class="ph-bold ph-printer text-lg"></i>
+                                <span>Cetak Rapor</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Summary Cards -->
+                <div class="p-6 sm:p-8 space-y-8">
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3.5 sm:gap-5">
+                        <!-- Bahasa Indonesia Score -->
+                        <div class="bg-blue-50/80 border border-blue-200/80 rounded-2xl p-4 flex flex-col justify-between">
+                            <div class="flex items-center justify-between text-blue-700 mb-2">
+                                <span class="text-xs font-bold uppercase tracking-wider">B. Indonesia</span>
+                                <i class="ph-duotone ph-book-bookmark text-xl"></i>
+                            </div>
+                            <div id="stBindo" class="text-2xl sm:text-3xl font-black text-blue-950">0,00</div>
+                            <p class="text-[11px] text-blue-600 mt-1">Tertinggi Kelas: 93,34</p>
+                        </div>
+
+                        <!-- Matematika Score -->
+                        <div class="bg-amber-50/80 border border-amber-200/80 rounded-2xl p-4 flex flex-col justify-between">
+                            <div class="flex items-center justify-between text-amber-700 mb-2">
+                                <span class="text-xs font-bold uppercase tracking-wider">Matematika</span>
+                                <i class="ph-duotone ph-calculator text-xl"></i>
+                            </div>
+                            <div id="stMat" class="text-2xl sm:text-3xl font-black text-amber-950">0,00</div>
+                            <p class="text-[11px] text-amber-700 font-medium truncate mt-1">Tertinggi Kelas: 72,25</p>
+                        </div>
+
+                        <!-- Average Score -->
+                        <div class="bg-emerald-50/80 border border-emerald-200/80 rounded-2xl p-4 flex flex-col justify-between">
+                            <div class="flex items-center justify-between text-emerald-700 mb-2">
+                                <span class="text-xs font-bold uppercase tracking-wider">Rata-Rata</span>
+                                <i class="ph-duotone ph-chart-line-up text-xl"></i>
+                            </div>
+                            <div id="stAverage" class="text-2xl sm:text-3xl font-black text-emerald-950">0,00</div>
+                            <p id="stTotalText" class="text-[11px] font-semibold text-emerald-700 mt-1">Jumlah: 0,00</p>
+                        </div>
+
+                        <!-- Class Rank -->
+                        <div class="bg-purple-50/80 border border-purple-200/80 rounded-2xl p-4 flex flex-col justify-between">
+                            <div class="flex items-center justify-between text-purple-700 mb-2">
+                                <span class="text-xs font-bold uppercase tracking-wider">Peringkat Kelas</span>
+                                <i class="ph-duotone ph-medal text-xl"></i>
+                            </div>
+                            <div class="flex items-baseline space-x-1">
+                                <span id="stRank" class="text-2xl sm:text-3xl font-black text-purple-950">#1</span>
+                                <span class="text-xs text-purple-600 font-semibold">/ 21 Siswa</span>
+                            </div>
+                            <p class="text-[11px] text-purple-700 mt-1">Berdasarkan Rata-Rata</p>
+                        </div>
+                    </div>
+
+                    <!-- Subject Grades Table & Visual Bars -->
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-base sm:text-lg font-extrabold text-slate-800 flex items-center space-x-2">
+                                <i class="ph-fill ph-book-open-text text-blue-700 text-xl"></i>
+                                <span>Rincian Nilai Mata Pelajaran</span>
+                            </h3>
+                            <span class="text-xs text-slate-500 font-medium">Skala 0 - 100</span>
+                        </div>
+
+                        <div class="overflow-hidden rounded-2xl border border-slate-200">
+                            <table class="w-full text-left border-collapse">
+                                <thead>
+                                    <tr class="bg-slate-100 border-b border-slate-200 text-slate-600 text-xs font-bold uppercase tracking-wider">
+                                        <th class="py-3.5 px-4 w-12 text-center">No</th>
+                                        <th class="py-3.5 px-4">Mata Pelajaran</th>
+                                        <th class="py-3.5 px-4 hidden sm:table-cell w-1/3">Capaian Visual</th>
+                                        <th class="py-3.5 px-4 text-center">Rata Kelas</th>
+                                        <th class="py-3.5 px-4 text-right">Nilai Siswa</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="stSubjectTableBody" class="divide-y divide-slate-200 text-sm">
+                                    <!-- Populated by JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Footer Info -->
+                    <div class="bg-slate-50 rounded-2xl p-4 border border-slate-200/80 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-slate-500">
+                        <div class="flex items-center space-x-2">
+                            <i class="ph-fill ph-info text-blue-600 text-lg shrink-0"></i>
+                            <span>Data sesuai dokumen <strong>DAFTAR NILAI ASSIKS PERIODE 12–13 OKTOBER 2026</strong> SDN Kuningan 03 Tahun 2026.</span>
+                        </div>
+                        <button onclick="logout()" class="no-print text-blue-700 hover:text-blue-900 font-bold flex items-center space-x-1">
+                            <i class="ph-bold ph-arrows-left-right"></i>
+                            <span>Ganti Nomor Absen Lain</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VIEW 3: TEACHER / ADMIN ALL STUDENTS TABLE -->
+        <section id="teacherView" class="hidden w-full max-w-5xl fade-in">
+            <div class="bg-white rounded-3xl shadow-xl border border-slate-200/80 overflow-hidden">
+                <div class="bg-gradient-to-r from-slate-900 via-blue-950 to-indigo-950 p-6 sm:p-8 text-white flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                    <div>
+                        <span class="inline-flex items-center space-x-1.5 bg-emerald-400/20 border border-emerald-300/30 text-emerald-300 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-2">
+                            <i class="ph-fill ph-chalkboard-teacher"></i>
+                            <span>Mode Rekapitulasi Guru</span>
+                        </span>
+                        <h2 class="text-xl sm:text-2xl font-extrabold">DAFTAR NILAI ASSIKS PERIODE 12–13 OKTOBER 2026</h2>
+                        <p class="text-xs sm:text-sm text-slate-300 mt-0.5">SDN KUNINGAN 03 TAHUN 2026 • Total 21 Siswa</p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div class="relative">
+                            <i class="ph-bold ph-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                            <input 
+                                type="text" 
+                                id="searchStudentInput" 
+                                oninput="renderTeacherTable()" 
+                                placeholder="Cari nama / NISN / absen..." 
+                                class="pl-9 pr-4 py-2 rounded-xl bg-white/10 border border-white/20 text-white placeholder-slate-300 text-xs sm:text-sm focus:outline-none focus:bg-white/20"
+                            >
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Highlight Statistik Tertinggi & Terendah sesuai Gambar -->
+                <div class="p-4 sm:p-6 bg-slate-50 border-b border-slate-200 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+                    <div class="bg-white p-3.5 rounded-2xl border border-emerald-200 shadow-xs flex items-center justify-between">
+                        <div>
+                            <div class="text-[11px] font-bold uppercase text-emerald-700">B. Indonesia Tertinggi</div>
+                            <div class="text-sm font-extrabold text-slate-800 mt-0.5">SASKIA</div>
+                        </div>
+                        <div class="text-xl font-black text-emerald-700 bg-emerald-50 px-3 py-1.5 rounded-xl border border-emerald-200">93.34</div>
+                    </div>
+                    <div class="bg-white p-3.5 rounded-2xl border border-blue-200 shadow-xs flex items-center justify-between">
+                        <div>
+                            <div class="text-[11px] font-bold uppercase text-blue-700">Matematika Tertinggi</div>
+                            <div class="text-sm font-extrabold text-slate-800 mt-0.5">FARIZ</div>
+                        </div>
+                        <div class="text-xl font-black text-blue-700 bg-blue-50 px-3 py-1.5 rounded-xl border border-blue-200">72.25</div>
+                    </div>
+                    <div class="bg-white p-3.5 rounded-2xl border border-amber-200 shadow-xs flex items-center justify-between">
+                        <div>
+                            <div class="text-[11px] font-bold uppercase text-amber-700">B. Indonesia Terendah</div>
+                            <div class="text-sm font-extrabold text-slate-800 mt-0.5">ZAHRAH</div>
+                        </div>
+                        <div class="text-xl font-black text-amber-700 bg-amber-50 px-3 py-1.5 rounded-xl border border-amber-200">50.05</div>
+                    </div>
+                    <div class="bg-white p-3.5 rounded-2xl border border-rose-200 shadow-xs flex items-center justify-between">
+                        <div>
+                            <div class="text-[11px] font-bold uppercase text-rose-700">Matematika Terendah</div>
+                            <div class="text-sm font-extrabold text-slate-800 mt-0.5">RIZQI</div>
+                        </div>
+                        <div class="text-xl font-black text-rose-700 bg-rose-50 px-3 py-1.5 rounded-xl border border-rose-200">27.2</div>
+                    </div>
+                </div>
+
+                <div class="p-4 sm:p-6 overflow-x-auto">
+                    <table class="w-full text-left border-collapse min-w-[680px]">
+                        <thead>
+                            <tr class="bg-slate-100 border-b border-slate-200 text-slate-700 text-xs font-extrabold uppercase">
+                                <th class="py-3 px-3 text-center w-14">NO</th>
+                                <th class="py-3 px-4">NAMA</th>
+                                <th class="py-3 px-4 text-center">NISN</th>
+                                <th class="py-3 px-4 text-center bg-blue-50/70 text-blue-900">B.INDO</th>
+                                <th class="py-3 px-4 text-center bg-amber-50/70 text-amber-900">MAT</th>
+                                <th class="py-3 px-4 text-center bg-emerald-50/70 text-emerald-900">RATA-RATA</th>
+                                <th class="py-3 px-3 text-center">AKSI</th>
+                            </tr>
+                        </thead>
+                        <tbody id="teacherTableBody" class="divide-y divide-slate-200 text-xs sm:text-sm">
+                            <!-- Populated by JS -->
+                        </tbody>
+                        <tfoot>
+                            <tr class="bg-slate-800 text-white font-bold text-xs sm:text-sm">
+                                <td colspan="3" class="py-3.5 px-4 text-right uppercase tracking-wider">Rata-Rata Kelas</td>
+                                <td class="py-3.5 px-4 text-center text-blue-300">74.88</td>
+                                <td class="py-3.5 px-4 text-center text-amber-300">44.51</td>
+                                <td class="py-3.5 px-4 text-center text-emerald-300">59.69</td>
+                                <td></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- MODAL DAFTAR ABSEN SISWA -->
+    <div id="helperModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-50 hidden items-center justify-center p-4 no-print">
+        <div class="bg-white rounded-3xl max-w-lg w-full max-h-[85vh] flex flex-col shadow-2xl border border-slate-200 overflow-hidden fade-in">
+            <div class="p-5 bg-slate-900 text-white flex items-center justify-between">
+                <div class="flex items-center space-x-2.5">
+                    <i class="ph-fill ph-users-three text-2xl text-amber-400"></i>
+                    <div>
+                        <h3 class="font-bold text-base">Daftar Nomor Absen Siswa</h3>
+                        <p class="text-xs text-slate-300">Klik nama siswa untuk mengisi password otomatis</p>
+                    </div>
+                </div>
+                <button onclick="toggleStudentHelper()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center">
+                    <i class="ph-bold ph-x"></i>
+                </button>
+            </div>
+            <div class="p-3 border-b border-slate-200 bg-slate-50">
+                <input 
+                    type="text" 
+                    id="modalSearchInput" 
+                    oninput="renderHelperList()" 
+                    placeholder="Cari nama siswa..." 
+                    class="w-full px-3.5 py-2 bg-white border border-slate-300 rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-blue-600"
+                >
+            </div>
+            <div id="helperStudentList" class="p-3 overflow-y-auto divide-y divide-slate-100 space-y-1">
+                <!-- Populated by JS -->
+            </div>
+            <div class="p-3.5 bg-slate-50 border-t border-slate-200 flex justify-between items-center text-xs text-slate-500">
+                <span>User: <strong>SDNKUN03</strong></span>
+                <button onclick="selectQuickStudent('GURU')" class="text-indigo-700 hover:underline font-bold">Masuk Mode Rekap Guru</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center py-4 text-xs text-slate-500 no-print">
+        <p>© 2026 <strong>SDN Kuningan 03 Semarang</strong> • Daftar Nilai ASSIKS Periode 12–13 Oktober 2026</p>
+    </footer>
+
+    <script>
+        // Data Resmi Sesuai Gambar Referensi: DAFTAR NILAI ASSIKS PERIODE 12-13 OKTOBER 2026 SDN KUNINGAN 03 TAHUN 2026
+        const SUBJECTS = [
+            { key: 'bindo', code: 'B.INDO', name: 'Bahasa Indonesia (B.INDO)', classAvg: 74.88, max: 93.34, min: 50.05 },
+            { key: 'mat', code: 'MAT', name: 'Matematika (MAT)', classAvg: 44.51, max: 72.25, min: 27.20 }
+        ];
+
+        const STUDENTS_DATA = [
+            { absen: 1,  name: "ABDUL HARITS",                  nisn: "3133123914", bindo: 68.82, mat: 29.97 },
+            { absen: 2,  name: "ACHMAD BAHRUL ULLUM",           nisn: "3156261901", bindo: 86.67, mat: 67.81 },
+            { absen: 3,  name: "ADEVA AFSHEEN KURNIAWAN",       nisn: "3146764130", bindo: 56.71, mat: 51.16 },
+            { absen: 4,  name: "ALIF KHANAFI RESTU PAMUNGKAS",  nisn: "0145062797", bindo: 66.7,  mat: 42.18 },
+            { absen: 5,  name: "ALILLA PUTRI PRADANI",          nisn: "0148908612", bindo: 82.24, mat: 36.73 },
+            { absen: 6,  name: "ALLYA NAFIDA",                  nisn: "3142073900", bindo: 77.7,  mat: 30.07 },
+            { absen: 7,  name: "ALVARO RAYYAN PRADITYA",        nisn: "3149857436", bindo: 69.93, mat: 38.85 },
+            { absen: 8,  name: "ANDRE RESMA SATRIYA",           nisn: "0141615775", bindo: 70.59, mat: 33.3  },
+            { absen: 9,  name: "ARSYAFIN FAJAR MAULANA",        nisn: "0132770170", bindo: 74.47, mat: 35.52 },
+            { absen: 10, name: "ARYA DWIE IBRAHIM",             nisn: "3146866098", bindo: 84.46, mat: 42.18 },
+            { absen: 11, name: "DEVINA HANA ALAINA",            nisn: "0135961193", bindo: 76.59, mat: 32.29 },
+            { absen: 12, name: "ERISKA MAYQILA PUTRI",          nisn: "3158533465", bindo: 70.03, mat: 39.96 },
+            { absen: 13, name: "FARIZKY NOR ROKHMAN",           nisn: "0146557023", bindo: 88.9,  mat: 72.25 },
+            { absen: 14, name: "HAIDAR JUNA ZAIDAN",            nisn: "0149667100", bindo: 68.92, mat: 41.07 },
+            { absen: 15, name: "MUHAMMAD HEXA AL KAUTSAR",      nisn: "0145374306", bindo: 71.04, mat: 43.39 },
+            { absen: 16, name: "NAYLA PUTRI NUR LATIFA",        nisn: "3140217147", bindo: 69.38, mat: 39.96 },
+            { absen: 17, name: "PUTRI FISAN ARDANI",            nisn: "3144309113", bindo: 78.91, mat: 38.3  },
+            { absen: 18, name: "PUTRI MUTIARA HAFIZ",           nisn: "3146837361", bindo: 87.69, mat: 52.17 },
+            { absen: 19, name: "RIZQI AZHAR AL GHOZALI",        nisn: "3142913816", bindo: 74.47, mat: 27.2  },
+            { absen: 20, name: "SASKIA THALITA SAKTI",          nisn: "0146873472", bindo: 93.34, mat: 70.49 },
+            { absen: 21, name: "ZAHRAH HUMAIRAA JANNAH",        nisn: "0141046668", bindo: 50.05, mat: 28.86 }
+        ];
+
+        // Hitung jumlah, rata-rata, dan peringkat
+        STUDENTS_DATA.forEach(st => {
+            st.jumlah = +(st.bindo + st.mat).toFixed(2);
+            st.rata = +(st.jumlah / 2).toFixed(2);
+        });
+
+        const sortedByScore = [...STUDENTS_DATA].sort((a, b) => b.jumlah - a.jumlah);
+        STUDENTS_DATA.forEach(st => {
+            st.rank = sortedByScore.findIndex(s => s.absen === st.absen) + 1;
+        });
+
+        // Format angka sesuai tabel referensi (tanpa memaksa trailing zero jika seperti 66.7, namun tetap rapi)
+        function formatScore(num) {
+            return Number(num.toFixed(2)).toString();
+        }
+
+        function getBarColor(score) {
+            if (score >= 80) return 'bg-emerald-500';
+            if (score >= 65) return 'bg-blue-600';
+            if (score >= 50) return 'bg-amber-500';
+            return 'bg-rose-500';
+        }
+
+        function togglePasswordVisibility() {
+            const pwdInput = document.getElementById('password');
+            const eyeIcon = document.getElementById('eyeIcon');
+            if (pwdInput.type === 'password') {
+                pwdInput.type = 'text';
+                eyeIcon.classList.replace('ph-eye', 'ph-eye-slash');
+            } else {
+                pwdInput.type = 'password';
+                eyeIcon.classList.replace('ph-eye-slash', 'ph-eye');
+            }
+        }
+
+        function handleLogin(event) {
+            event.preventDefault();
+            const usernameInput = document.getElementById('username').value.trim().toUpperCase();
+            const passwordInput = document.getElementById('password').value.trim().toUpperCase();
+            const errorBox = document.getElementById('loginError');
+            const errorText = document.getElementById('loginErrorText');
+
+            errorBox.classList.add('hidden');
+            errorBox.classList.remove('flex');
+
+            if (usernameInput !== 'SDNKUN03') {
+                errorText.textContent = 'Username harus diisi dengan SDNKUN03.';
+                errorBox.classList.remove('hidden');
+                errorBox.classList.add('flex');
+                return;
+            }
+
+            // Check if teacher mode
+            if (passwordInput === 'GURU' || passwordInput === 'ADMIN' || passwordInput === '0') {
+                showTeacherDashboard();
+                return;
+            }
+
+            // Parse student absen number (accepts "1", "01", "21", etc.)
+            const absenNum = parseInt(passwordInput, 10);
+            const student = STUDENTS_DATA.find(s => s.absen === absenNum);
+
+            if (!student || isNaN(absenNum)) {
+                errorText.textContent = 'Password salah! Masukkan Nomor Absen antara 1 sampai 21.';
+                errorBox.classList.remove('hidden');
+                errorBox.classList.add('flex');
+                return;
+            }
+
+            showStudentDashboard(student);
+        }
+
+        function showStudentDashboard(student) {
+            document.getElementById('loginView').classList.add('hidden');
+            document.getElementById('teacherView').classList.add('hidden');
+            document.getElementById('studentView').classList.remove('hidden');
+
+            const navSection = document.getElementById('navUserSection');
+            navSection.classList.remove('hidden');
+            navSection.classList.add('flex');
+            document.getElementById('navUserName').textContent = `${student.absen}. ${student.name}`;
+
+            // Populate student header & summary
+            document.getElementById('stName').textContent = student.name;
+            document.getElementById('stAbsen').textContent = student.absen;
+            document.getElementById('stNisn').textContent = student.nisn;
+            document.getElementById('stBindo').textContent = formatScore(student.bindo);
+            document.getElementById('stMat').textContent = formatScore(student.mat);
+            document.getElementById('stAverage').textContent = student.rata.toFixed(2);
+            document.getElementById('stTotalText').textContent = `Jumlah Nilai: ${student.jumlah.toFixed(2)}`;
+            document.getElementById('stRank').textContent = `#${student.rank}`;
+
+            // Populate subjects table
+            const tbody = document.getElementById('stSubjectTableBody');
+            tbody.innerHTML = '';
+
+            SUBJECTS.forEach((sub, idx) => {
+                const val = student[sub.key];
+                const isAboveAvg = val >= sub.classAvg;
+                const barColor = getBarColor(val);
+
+                const tr = document.createElement('tr');
+                tr.className = 'hover:bg-slate-50 transition';
+                tr.innerHTML = `
+                    <td class="py-4 px-4 text-center font-semibold text-slate-500">${idx + 1}</td>
+                    <td class="py-4 px-4">
+                        <div class="font-bold text-slate-800">${sub.name}</div>
+                        <div class="text-xs text-slate-400">Tertinggi: ${sub.max} • Terendah: ${sub.min}</div>
+                    </td>
+                    <td class="py-4 px-4 hidden sm:table-cell">
+                        <div class="w-full bg-slate-200 h-3 rounded-full overflow-hidden">
+                            <div class="${barColor} h-full rounded-full transition-all duration-500" style="width: ${Math.min(100, val)}%"></div>
+                        </div>
+                    </td>
+                    <td class="py-4 px-4 text-center text-slate-500 font-medium">${sub.classAvg.toFixed(2)}</td>
+                    <td class="py-4 px-4 text-right">
+                        <span class="inline-flex items-center px-3.5 py-1.5 rounded-xl font-extrabold text-sm ${isAboveAvg ? 'bg-emerald-50 text-emerald-800 border border-emerald-200' : 'bg-amber-50 text-amber-800 border border-amber-200'}">
+                            ${formatScore(val)}
+                        </span>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function showTeacherDashboard() {
+            document.getElementById('loginView').classList.add('hidden');
+            document.getElementById('studentView').classList.add('hidden');
+            document.getElementById('teacherView').classList.remove('hidden');
+
+            const navSection = document.getElementById('navUserSection');
+            navSection.classList.remove('hidden');
+            navSection.classList.add('flex');
+            document.getElementById('navUserName').textContent = 'Mode Guru / Rekap Kelas';
+
+            renderTeacherTable();
+        }
+
+        function renderTeacherTable() {
+            const query = (document.getElementById('searchStudentInput')?.value || '').toLowerCase();
+            const tbody = document.getElementById('teacherTableBody');
+            tbody.innerHTML = '';
+
+            const filtered = STUDENTS_DATA.filter(s => 
+                s.name.toLowerCase().includes(query) || 
+                String(s.absen).includes(query) ||
+                s.nisn.toLowerCase().includes(query)
+            );
+
+            filtered.forEach(s => {
+                const isMaxBindo = s.bindo === 93.34;
+                const isMinBindo = s.bindo === 50.05;
+                const isMaxMat = s.mat === 72.25;
+                const isMinMat = s.mat === 27.2;
+
+                const tr = document.createElement('tr');
+                tr.className = 'hover:bg-blue-50/60 transition cursor-pointer';
+                tr.onclick = () => showStudentDashboard(s);
+                tr.innerHTML = `
+                    <td class="py-3 px-3 text-center font-bold text-slate-700">${s.absen}</td>
+                    <td class="py-3 px-4 font-bold text-slate-800">${s.name}</td>
+                    <td class="py-3 px-4 text-center font-mono text-xs text-slate-600">${s.nisn}</td>
+                    <td class="py-3 px-4 text-center font-bold ${isMaxBindo ? 'bg-emerald-100 text-emerald-900' : isMinBindo ? 'bg-amber-100 text-amber-900' : 'text-slate-800'}">
+                        ${formatScore(s.bindo)}
+                    </td>
+                    <td class="py-3 px-4 text-center font-bold ${isMaxMat ? 'bg-blue-100 text-blue-900' : isMinMat ? 'bg-rose-100 text-rose-900' : 'text-slate-800'}">
+                        ${formatScore(s.mat)}
+                    </td>
+                    <td class="py-3 px-4 text-center font-extrabold bg-emerald-50/50 text-emerald-900">${s.rata.toFixed(2)}</td>
+                    <td class="py-3 px-3 text-center">
+                        <button class="px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-semibold">
+                            Detail
+                        </button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function logout() {
+            document.getElementById('studentView').classList.add('hidden');
+            document.getElementById('teacherView').classList.add('hidden');
+            document.getElementById('loginView').classList.remove('hidden');
+            document.getElementById('navUserSection').classList.add('hidden');
+            document.getElementById('password').value = '';
+            document.getElementById('password').focus();
+        }
+
+        function toggleStudentHelper() {
+            const modal = document.getElementById('helperModal');
+            if (modal.classList.contains('hidden')) {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                renderHelperList();
+            } else {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }
+        }
+
+        function renderHelperList() {
+            const q = (document.getElementById('modalSearchInput')?.value || '').toLowerCase();
+            const container = document.getElementById('helperStudentList');
+            container.innerHTML = '';
+
+            STUDENTS_DATA.filter(s => s.name.toLowerCase().includes(q) || String(s.absen).includes(q) || s.nisn.includes(q))
+                .forEach(s => {
+                    const btn = document.createElement('button');
+                    btn.type = 'button';
+                    btn.onclick = () => selectQuickStudent(String(s.absen));
+                    btn.className = 'w-full text-left px-3.5 py-2.5 rounded-xl hover:bg-blue-50 flex items-center justify-between transition group';
+                    btn.innerHTML = `
+                        <div class="flex items-center space-x-3">
+                            <span class="w-7 h-7 rounded-lg bg-blue-100 text-blue-800 font-bold text-xs flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition">
+                                ${s.absen}
+                            </span>
+                            <div>
+                                <div class="text-xs sm:text-sm font-bold text-slate-800">${s.name}</div>
+                                <div class="text-[11px] text-slate-400">NISN: ${s.nisn}</div>
+                            </div>
+                        </div>
+                        <span class="text-xs font-semibold text-blue-600 group-hover:translate-x-0.5 transition">
+                            Password: <strong>${s.absen}</strong> →
+                        </span>
+                    `;
+                    container.appendChild(btn);
+                });
+        }
+
+        function selectQuickStudent(pwdValue) {
+            document.getElementById('username').value = 'SDNKUN03';
+            document.getElementById('password').value = pwdValue;
+            toggleStudentHelper();
+            document.getElementById('loginForm').requestSubmit();
+        }
+    </script>
+</body>
+</html>
+```
